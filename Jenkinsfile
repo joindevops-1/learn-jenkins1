@@ -3,6 +3,10 @@ pipeline {
         label 'AGENT-1'
     }
 
+    options {
+        timeout(time: 10, unit: 'SECONDS') 
+    }
+
     environment { 
         CC = 'clang'
     }
@@ -12,6 +16,7 @@ pipeline {
             steps {
                 sh 'echo This is build'
                 sh 'env'
+                sh 'sleep 15'
             }
         }
         stage('Test') {
