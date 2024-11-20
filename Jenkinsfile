@@ -2,6 +2,10 @@ pipeline {
     agent {
         label 'AGENT-1'
     }
+
+    environment { 
+        CC = 'clang'
+    }
     
     stages {
         stage('Build') {
@@ -23,6 +27,7 @@ pipeline {
         stage("print params"){
             steps{
                 sh 'echo This is Deploy'
+                sh 'env'
             }
         }
     }
