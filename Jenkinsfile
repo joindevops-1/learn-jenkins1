@@ -43,6 +43,12 @@ pipeline {
             }
         }
         stage("print params"){
+            when {
+                not {
+                    branch 'main'
+                }
+                environment name: 'DEPLOY_TO', value: 'non-production'
+            }
             steps{
                 sh 'echo This is Deploy'  
             }
